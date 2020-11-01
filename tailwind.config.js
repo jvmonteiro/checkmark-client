@@ -5,7 +5,7 @@ module.exports = {
   },
   purge: {
     enabled: true,
-    content: ['./src/**/*.html', './src/assets/*.css', './src/**/*.jsx', './src/**/*.tsx'],
+    content: ['./src/**/*.html', './src/**/*.jsx', './src/**/*.tsx'],
   },
   target: 'relaxed',
   prefix: '',
