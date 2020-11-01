@@ -3,10 +3,13 @@ import { FiGithub } from 'react-icons/fi';
 
 const Header = () => {
   return (
-    <header>
+    <header className="mb-16">
       <nav className="flex flex-row items-baseline py-4">
-        <div className="mr-32 ml-8  text-3xl">Checkmark</div>
-        <a className="hover:underline" href="https://github.com/jvmonteiro/checkmark-client">
+        <div className="mr-32 text-3xl">Checkmark</div>
+        <a
+          className="transition-transform duration-100 ease-in transform hover:scale-125"
+          href="https://github.com/jvmonteiro/checkmark-client"
+        >
           <FiGithub />
         </a>
       </nav>
