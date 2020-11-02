@@ -5,19 +5,18 @@ import { ISOToHuman } from '../../global/utils/date';
 export interface ITodo {
   _id: string;
   creator: string;
-  creation_date: string;
   description: string;
   completed: boolean;
+  creation_date: string;
   last_updated: string;
   __v: number;
 }
 
 export interface TodoProps {
   todo: ITodo;
-  setWidth: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Todo = ({ todo, setWidth }: TodoProps) => {
+const Todo = ({ todo }: TodoProps) => {
   const [completed, setCompleted] = useState(todo.completed);
   const [isSelected, setIsSelected] = useState(false);
 
@@ -25,14 +24,9 @@ const Todo = ({ todo, setWidth }: TodoProps) => {
   const [fmtCreation, fmtLastUpd] = [ISOToHuman(creation_date), ISOToHuman(last_updated)];
 
   let config = {
-    width: isSelected ? 'max-w-xl' : 'max-w-lg',
     striketrough: completed ? 'line-through text-gray-700 opacity-50' : '',
-    truncate: isSelected ? 'break-normal' : 'truncate',
+    truncate: isSelected ? 'break-normal break-words' : 'truncate',
   };
-  useLayoutEffect(() => {
-    setWidth(config.width);
-  }, [config, setWidth]);
-  // const title = checkTruncate ? todo.description.slice(0, 49) + '...' : todo.description;
 
   // Show additional info when dropdown is selected.
   const additionalInfo = isSelected ? (
@@ -58,9 +52,8 @@ const Todo = ({ todo, setWidth }: TodoProps) => {
         />
         <label
           htmlFor={todo._id}
-          className={'font-bold mr-4 ' + config.truncate + ' ' + config.striketrough}
+          className={'font-bold mr-auto ' + config.truncate + ' ' + config.striketrough}
         >
-          {/* {title} */}
           {todo.description}
         </label>
         <Chevron isSelected={isSelected} setIsSelected={setIsSelected} />
